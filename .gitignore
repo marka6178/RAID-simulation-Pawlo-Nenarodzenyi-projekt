@@ -1,0 +1,18 @@
+# Pliki skompilowane
+DAID_3
+RAID_3
+*.o
+*.out
+*.exe
+
+# Konfiguracja lokalna edytora
+.vscode/
+
+# Katalogi kompilacji
+build/
+cmake-build-*/
+
+# Pliki tymczasowe
+*~
+*.swp
+*.swo
