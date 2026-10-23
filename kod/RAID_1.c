@@ -2,6 +2,7 @@
 
 int main(void){
     printf("huiiiii");
+    printf("huinia");
 
 
     
