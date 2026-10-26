@@ -2,7 +2,6 @@
 
 #define Dysk1 "../../disks/RAID_1/dysk1.bin"
 #define Dysk2 "../../disks/RAID_1/dysk2.bin"
-#define Dysk_logiczny "../../disks/RAID_1/logiczny_dysk.bin"
 
 int main(void){
     int dane = 0;
@@ -21,10 +20,5 @@ int main(void){
     fprintf(fptr, "%d", dane);
     fclose(fptr); 
 
-    fptr = fopen(Dysk_logiczny, "a");
-    fprintf(fptr, "%d", dane);
-    fclose(fptr); 
-
-    
     return 0;
 }
