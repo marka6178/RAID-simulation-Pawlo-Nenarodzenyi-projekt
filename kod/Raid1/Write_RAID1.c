@@ -1,23 +1,38 @@
 #include <stdio.h>
+#include <string.h>
 
 #define Dysk1 "../../disks/RAID_1/dysk1.bin"
 #define Dysk2 "../../disks/RAID_1/dysk2.bin"
 
 int main(void){
-    int dane = 0;
+    
+    char input[1024];
+
+    printf("Podaj dane: ");
+
+    if (fgets(input, sizeof(input), stdin) == NULL) {
+        return 1;
+    }
+    size_t len = strlen(input);
+    if (len > 0 && input[len - 1] == '\n') {
+        input[--len] = '\0';                        //usuniecie /n 
+    }
 
     FILE *fptr;
 
-    printf("podaj dane do zapisu: ");
-    scanf("%d", &dane);
-    printf("%d",dane);
+    fptr = fopen(Dysk1, "ab");
+    for (size_t i = 0; i < len; i++) {
+        for (int bit = 7; bit >= 0; bit--) {
+            fprintf(fptr,"%d",(input[i] >> bit) & 1);
+        }
+    }
 
-    fptr = fopen(Dysk1, "a");
-    fprintf(fptr, "%d", dane);
-    fclose(fptr); 
-
-    fptr = fopen(Dysk2, "a");
-    fprintf(fptr, "%d", dane);
+    fptr = fopen(Dysk2, "ab");
+        for (size_t i = 0; i < len; i++) {
+        for (int bit = 7; bit >= 0; bit--) {
+            fprintf(fptr,"%d",(input[i] >> bit) & 1);
+        }
+    }    fptr = fopen(Dysk1, "ab");
     fclose(fptr); 
 
     return 0;

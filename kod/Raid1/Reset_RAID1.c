@@ -5,7 +5,7 @@
 
 int main(void){
     FILE *fptr;
-
+    
     fptr = fopen(Dysk1, "w");
     fclose(fptr); 
 
