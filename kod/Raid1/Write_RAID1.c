@@ -22,17 +22,13 @@ int main(void){
 
     fptr = fopen(Dysk1, "ab");
     for (size_t i = 0; i < len; i++) {
-        for (int bit = 7; bit >= 0; bit--) {
-            fprintf(fptr,"%d",(input[i] >> bit) & 1);
-        }
+        fwrite(&input[i], sizeof(input[i]), 1, fptr);
     }
 
     fptr = fopen(Dysk2, "ab");
-        for (size_t i = 0; i < len; i++) {
-        for (int bit = 7; bit >= 0; bit--) {
-            fprintf(fptr,"%d",(input[i] >> bit) & 1);
-        }
-    }    fptr = fopen(Dysk1, "ab");
+    for (size_t i = 0; i < len; i++) {
+        fwrite(&input[i], sizeof(input[i]), 1, fptr);    
+    }  
     fclose(fptr); 
 
     return 0;

@@ -4,17 +4,33 @@
 #define Dysk2 "../../disks/RAID_1/dysk2.bin"
 
 int main(void){
+    int bajt;
+    char buffer[1];
+    printf("podaj bajt który chcesz odczytac: ");
+    scanf("%d", &bajt);
+
     FILE *fptr;
 
-    fptr = fopen(Dysk1, "r");
-
-    if(fptr ==  NULL){
-
+    fptr = fopen(Dysk1, "rb");
+    if(fptr == NULL){
+        perror("blad odczytu");
+        return 1;
     }
-    fclose(fptr);
+    if (fseek(fptr, bajt, SEEK_SET) != 0) {
+        perror("Blad fseek");
+        fclose(fptr);
+        return 1;
+    }
 
-    fptr = fopen(Dysk2, "r");
+    if (fread(buffer, sizeof(char), 1, fptr) != 1) {
+        printf("Nie udalo sie odczytac bajtu.\n");
+        fclose(fptr);
+        return 1;
+    }  
     fclose(fptr);
+    
+
+    printf("%c\n", buffer[0]);
 
     return 0;
 }
