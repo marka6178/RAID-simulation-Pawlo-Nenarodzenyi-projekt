@@ -10,25 +10,17 @@ int main(void)
     if (fgets(input, sizeof(input), stdin) == NULL) {
         return 1;
     }
-
+  
     size_t len = strlen(input);
-
     if (len > 0 && input[len - 1] == '\n') {
-        input[--len] = '\0';
+        input[--len] = '\0';                        //usuniecie \n 
     }
 
-    printf("Wczytano %zu bajtow\n", len);
-
-    printf("%c\n",input[0]);
-
-    for (size_t i = 0; i < len; i++) {
-        for (int bit = 7; bit >= 0; bit--) {
-            printf("%d", (input[i] >> bit) & 1);
-        }
-
-        printf(" ");
+    if(input[1] == NULL){
+        perror("za malo danych pidor");
+        return 1;
     }
 
-
+    
     return 0;
 }

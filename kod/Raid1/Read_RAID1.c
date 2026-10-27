@@ -9,13 +9,14 @@ int main(void){
     printf("podaj bajt który chcesz odczytac: ");
     scanf("%d", &bajt);
 
-    FILE *fptr;
+    FILE *fptr1;
+    FILE *fptr2;
 
-    fptr = fopen(Dysk1, "rb");
-    if(fptr == NULL){
+    fptr1 = fopen(Dysk1, "rb");
+    if(fptr1 == NULL){
         perror("blad odczytu z dysku 1");
 
-        fptr = fopen(Dysk2, "rb");
+        fptr2 = fopen(Dysk2, "rb");
         
         if(fptr == NULL){
             perror("blad odczytu z dysku 1 i 2");
