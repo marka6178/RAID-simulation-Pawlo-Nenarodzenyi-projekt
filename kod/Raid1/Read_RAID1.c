@@ -13,42 +13,41 @@ int main(void){
     FILE *fptr2;
 
     fptr1 = fopen(Dysk1, "rb");
+    fptr2 = fopen(Dysk2, "rb");
     if(fptr1 == NULL){
         perror("blad odczytu z dysku 1");
 
-        fptr2 = fopen(Dysk2, "rb");
-        
-        if(fptr == NULL){
+        if(fptr2 == NULL){
             perror("blad odczytu z dysku 1 i 2");
             return 1;
         }
         
-        if (fseek(fptr, bajt, SEEK_SET) != 0) {
+        if (fseek(fptr2, bajt, SEEK_SET) != 0) {
             perror("Blad fseek");
-            fclose(fptr);
+            fclose(fptr2);
             return 1;
         }
 
-        if (fread(buffer, sizeof(char), 1, fptr) != 1) {
+        if (fread(buffer, sizeof(char), 1, fptr2) != 1) {
             printf("Nie udalo sie odczytac bajtu.\n");
-            fclose(fptr);
+            fclose(fptr2);
             return 1;
         }  
-        fclose(fptr);
+        fclose(fptr2);
     }
     else{
-        if (fseek(fptr, bajt, SEEK_SET) != 0) {
+        if (fseek(fptr1, bajt, SEEK_SET) != 0) {
             perror("Blad fseek");
-            fclose(fptr);
+            fclose(fptr1);
             return 1;
         }
 
-        if (fread(buffer, sizeof(char), 1, fptr) != 1) {
+        if (fread(buffer, sizeof(char), 1, fptr1) != 1) {
             printf("Nie udalo sie odczytac bajtu.\n");
-            fclose(fptr);
+            fclose(fptr1);
             return 1;
         }  
-        fclose(fptr);
+        fclose(fptr1);
     }
 
     printf("%c\n", buffer[0]);
