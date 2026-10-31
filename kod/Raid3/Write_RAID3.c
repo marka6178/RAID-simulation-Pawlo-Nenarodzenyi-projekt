@@ -47,6 +47,5 @@ int main(void){
     fclose(fptr2);
     fclose(fptr3);
 
-
     return 0;
 }
