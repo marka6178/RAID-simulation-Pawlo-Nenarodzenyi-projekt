@@ -114,7 +114,6 @@ int main(void){
     fclose(fptr3);
 
     printf("%c\n", buffer);
-    printf("%c\n", buffer_next_byt);
 
     return 0;
 }
