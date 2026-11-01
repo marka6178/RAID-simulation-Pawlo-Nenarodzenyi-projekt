@@ -6,12 +6,7 @@
 #define Dysk2 "../../disks/RAID_4/dysk2.bin"
 #define Dysk3 "../../disks/RAID_4/dysk3.bin"
 
-
 typedef uint32_t block;
-
-block xor_block(block a, block b) {
-    return a ^ b;
-}
 
 int main(void){
     unsigned char input[1024];
